@@ -59,6 +59,100 @@ Impact Rules:
 
 ---
 
+## 📊 Final TOPSIS Results
+
+| Model | Spearman | MSE | Throughput | Size (MB) | TOPSIS Score | Rank |
+|--------|-----------|---------|------------|-----------|---------------|------|
+| paraphrase-MiniLM-L6-v2 | 0.8412 | 0.03729 | 381.72 | 86.64 | **0.9603** | 🏆 **1** |
+| all-MiniLM-L6-v2 | 0.8203 | 0.03682 | 386.49 | 86.64 | 0.9565 | 2 |
+| all-MiniLM-L12-v2 | 0.8309 | 0.03465 | 203.51 | 127.26 | 0.7687 | 3 |
+| all-mpnet-base-v2 | 0.8342 | 0.03258 | 36.00 | 417.66 | 0.5694 | 4 |
+| multi-qa-mpnet-base-dot-v1 | 0.7196 | 0.11262 | 50.57 | 417.66 | 0.4117 | 5 |
+| bert-large-nli-stsb-mean-tokens | **0.8527** | **0.03080** | 6.91 | 1278.46 | 0.3662 | 6 |
+
+---
+## 📈 Visual Analysis
+
+This section interprets the saved plots generated during evaluation.
+
+---
+
+### 1️⃣ Spearman Correlation Comparison
+
+<img src="results/Spearman_comparison.png" width="700"/>
+
+This chart compares how strongly each model's predictions correlate with human similarity judgments.
+
+- Higher values indicate better semantic understanding.
+- Transformer-based models typically perform strongly.
+- However, highest correlation does not guarantee best overall deployment choice.
+
+Since Spearman has the highest weight (0.4), it strongly influences the final ranking.
+
+---
+
+### 2️⃣ Mean Squared Error (MSE) Comparison
+
+<img src="results/MSE_comparison.png" width="700"/>
+
+This plot shows prediction error.
+
+- Lower MSE means predictions are closer to human scores.
+- Some models may have high correlation but slightly higher error.
+- This demonstrates why multi-criteria evaluation is important.
+
+---
+
+### 3️⃣ Throughput Comparison (Speed)
+
+<img src="results/Throughput_comparison.png" width="700"/>
+
+Throughput measures inference efficiency.
+
+- Lightweight MiniLM variants are significantly faster.
+- Larger models sacrifice speed for marginal accuracy gains.
+- In real-world systems, speed is critical for scalability.
+
+---
+
+### 4️⃣ Model Size Comparison
+
+<img src="results/Size_comparison.png" width="700"/>
+
+Model size affects:
+
+- Deployment feasibility
+- Memory usage
+- Cloud cost
+
+Smaller models are better suited for edge and production environments.
+
+---
+
+### 5️⃣ TOPSIS Ranking
+
+<img src="results/topsis_ranking.png" width="700"/>
+
+This plot shows the final TOPSIS scores.
+
+- The model with the highest score ranks 1.
+- TOPSIS balances accuracy, error, speed, and efficiency.
+- The top-ranked model provides the best overall trade-off.
+
+---
+
+### 6️⃣ Decision Matrix Heatmap
+
+<img src="results/decision_matrix_heatmap.png" width="700"/>
+
+The heatmap visualizes relative performance across metrics.
+
+- Warmer colors indicate stronger metric performance.
+- Helps quickly compare strengths and weaknesses.
+- Demonstrates why some high-accuracy models rank lower overall due to efficiency trade-offs.
+
+---
+
 ## ⚖️ TOPSIS Configuration
 
 Weights used:
