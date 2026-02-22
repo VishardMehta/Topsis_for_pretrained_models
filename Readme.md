@@ -126,29 +126,6 @@ This ensures suitability for real-world production systems where both accuracy a
 
 ---
 
-## 📂 Project Structure
-
-├── results/
-│ ├── raw_metrics.csv
-│ ├── final_ranking.csv
-│ ├── Spearman_comparison.png
-│ ├── MSE_comparison.png
-│ ├── Throughput_comparison.png
-│ ├── Size_comparison.png
-│ ├── topsis_ranking.png
-│ └── decision_matrix_heatmap.png
-│
-├── src/
-│ ├── evaluate_models.py
-│ ├── topsis.py
-│ ├── visualize.py
-│ └── main.py
-│
-├── requirements.txt
-└── README.md
-
----
-
 ## ▶️ How to Run
 
 From project root:
