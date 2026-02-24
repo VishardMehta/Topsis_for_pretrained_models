@@ -8,12 +8,12 @@ import os
 def main():
 
     models = [
-        "all-MiniLM-L6-v2",
-        "paraphrase-MiniLM-L6-v2",
-        "all-MiniLM-L12-v2",
-        "all-mpnet-base-v2",
-        "multi-qa-mpnet-base-dot-v1",
-        "bert-large-nli-stsb-mean-tokens"
+        "t5-small",
+        "t5-base",
+        "sshleifer/distilbart-cnn-6-6",
+        "sshleifer/distilbart-xsum-6-6",
+        "google/flan-t5-small",
+        "google/flan-t5-base",
     ]
 
     results = []
@@ -26,10 +26,11 @@ def main():
     df = pd.DataFrame(results)
 
     # Define TOPSIS weights
-    weights = [0.4, 0.2, 0.2, 0.2]
+    # ROUGE-1: 30%, ROUGE-2: 25%, ROUGE-L: 25%, Throughput: 10%, Size: 10%
+    weights = [0.30, 0.25, 0.25, 0.10, 0.10]
 
     # Define impacts (+ higher better, - lower better)
-    impacts = ["+", "-", "+", "-"]
+    impacts = ["+", "+", "+", "+", "-"]
 
     final_ranking = apply_topsis(df, weights, impacts)
 
@@ -45,6 +46,9 @@ def main():
     plot_metrics(df)
     plot_topsis(final_ranking)
     plot_heatmap(df)
+
+    print("\n✅ Evaluation complete! Results saved in results/ directory.")
+    print(final_ranking[["Model", "ROUGE-1", "ROUGE-2", "ROUGE-L", "Throughput", "Size", "TOPSIS Score", "Rank"]].to_string(index=False))
 
 
 if __name__ == "__main__":

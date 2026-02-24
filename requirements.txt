@@ -1,4 +1,5 @@
-sentence-transformers
+transformers
+torch
 datasets
 numpy
 pandas
@@ -6,3 +7,4 @@ matplotlib
 scikit-learn
 scipy
 seaborn
+rouge-score
