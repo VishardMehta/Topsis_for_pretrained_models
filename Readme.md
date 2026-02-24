@@ -4,7 +4,7 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
 This project implements a structured evaluation framework to identify the optimal pre-trained model for **Text Summarization** tasks using the **TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution)** multi-criteria decision-making method.
 
@@ -12,7 +12,7 @@ Instead of selecting a model purely based on a single metric, this approach eval
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 ### CNN/DailyMail (Version 3.0.0)
 
@@ -25,7 +25,7 @@ Instead of selecting a model purely based on a single metric, this approach eval
 
 ---
 
-## 🤗 Models Evaluated
+## Models Evaluated
 
 The following pretrained Seq2Seq models were evaluated for text summarization:
 
@@ -40,7 +40,7 @@ The following pretrained Seq2Seq models were evaluated for text summarization:
 
 ---
 
-## 📑 Evaluation Metrics Used
+## Evaluation Metrics Used
 
 The following criteria were used to build the decision matrix:
 
@@ -59,11 +59,11 @@ Impact Rules:
 
 ---
 
-## 📊 Final TOPSIS Results
+## Final TOPSIS Results
 
 | Model | ROUGE-1 | ROUGE-2 | ROUGE-L | Throughput | Size (MB) | TOPSIS Score | Rank |
 |-------|---------|---------|---------|------------|-----------|--------------|------|
-| sshleifer/distilbart-cnn-6-6 | 0.3804 | 0.1674 | 0.2854 | 0.22 | 680.22 | **0.7171** | 🏆 **1** |
+| sshleifer/distilbart-cnn-6-6 | 0.3804 | 0.1674 | 0.2854 | 0.22 | 680.22 | **0.7171** | **1** |
 | google/flan-t5-small | 0.2936 | 0.0982 | 0.2043 | 0.35 | 307.56 | 0.4144 | 2 |
 | t5-small | 0.2847 | 0.0906 | 0.1928 | 0.37 | 230.81 | 0.4078 | 3 |
 | google/flan-t5-base | 0.3358 | 0.1297 | 0.2481 | 0.13 | 990.35 | 0.4002 | 4 |
@@ -72,13 +72,13 @@ Impact Rules:
 
 ---
 
-## 📈 Visual Analysis
+## Visual Analysis
 
 This section interprets the saved plots generated during evaluation.
 
 ---
 
-### 1️⃣ ROUGE-1 Comparison
+### 1. ROUGE-1 Comparison
 
 <img src="results/ROUGE_1_comparison.png" width="700"/>
 
@@ -90,7 +90,7 @@ This chart compares unigram overlap between model-generated and reference summar
 
 ---
 
-### 2️⃣ ROUGE-2 Comparison
+### 2. ROUGE-2 Comparison
 
 <img src="results/ROUGE_2_comparison.png" width="700"/>
 
@@ -101,7 +101,7 @@ This plot shows bigram overlap, indicating fluency and coherence of generated su
 
 ---
 
-### 3️⃣ ROUGE-L Comparison
+### 3. ROUGE-L Comparison
 
 <img src="results/ROUGE_L_comparison.png" width="700"/>
 
@@ -112,7 +112,7 @@ ROUGE-L measures the longest common subsequence between prediction and reference
 
 ---
 
-### 4️⃣ Throughput Comparison (Speed)
+### 4. Throughput Comparison (Speed)
 
 <img src="results/Throughput_comparison.png" width="700"/>
 
@@ -124,7 +124,7 @@ Throughput measures inference efficiency (articles processed per second).
 
 ---
 
-### 5️⃣ Model Size Comparison
+### 5. Model Size Comparison
 
 <img src="results/Size_comparison.png" width="700"/>
 
@@ -138,7 +138,7 @@ Smaller models are better suited for edge and production environments.
 
 ---
 
-### 6️⃣ TOPSIS Ranking
+### 6. TOPSIS Ranking
 
 <img src="results/topsis_ranking.png" width="700"/>
 
@@ -150,7 +150,7 @@ This plot shows the final TOPSIS scores.
 
 ---
 
-### 7️⃣ Decision Matrix Heatmap
+### 7. Decision Matrix Heatmap
 
 <img src="results/decision_matrix_heatmap.png" width="700"/>
 
@@ -162,7 +162,7 @@ The heatmap visualizes relative performance across metrics.
 
 ---
 
-## ⚖️ TOPSIS Configuration
+## TOPSIS Configuration
 
 Weights used:
 [0.30, 0.25, 0.25, 0.10, 0.10]
@@ -179,18 +179,18 @@ This prioritizes summarization quality while still considering efficiency and de
 
 ---
 
-## 📂 Generated Results
+## Generated Results
 
 All results are automatically saved inside the `results/` folder:
 
-### 📄 CSV Files
+### CSV Files
 
 - `raw_metrics.csv` → Raw evaluation metrics for all models
 - `final_ranking.csv` → TOPSIS score and final ranking
 
 ---
 
-## 📈 Saved Visualizations
+## Saved Visualizations
 
 The following plots are generated and saved:
 
@@ -204,7 +204,7 @@ The following plots are generated and saved:
 
 ---
 
-## 🏆 Final Recommendation
+## Final Recommendation
 
 Based on multi-criteria TOPSIS evaluation, **`sshleifer/distilbart-cnn-6-6`** is the best model with:
 
@@ -216,7 +216,7 @@ This model provides the best balance between summarization quality and deploymen
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 From project root:
 
@@ -228,5 +228,4 @@ python src/main.py
 To generate results quickly from pre-computed metrics:
 
 ```bash
-python src/generate_results.py
 ```
